@@ -1,48 +1,50 @@
-let inp = document.getElementById('inp');
-let btnAdd = document.getElementById('btnAdd');
-let list = document.getElementById('list');
-let dark = document.getElementById('dark');
-let light = document.getElementById('light');
+let inp = document.getElementById("inp");
+let btnAdd = document.getElementById("btnAdd");
+let list = document.getElementById("list");
+let dark = document.getElementById("dark");
+let light = document.getElementById("light");
+let url = document.getElementById("url");
 
 btnAdd.onclick = () => {
     const text = inp.value.trim();
-    if (!text) return;
+
+    if(!text) return;
 
     let li = document.createElement('li');
     let p = document.createElement('p');
+    let img = document.createElement('img');
     let div = document.createElement('div');
-
     let buttonChange = document.createElement('button');
     let buttonDelete = document.createElement('button');
 
     buttonChange.textContent = 'Change';
     buttonDelete.textContent = 'Delete';
-
-
-    [buttonChange, buttonDelete].forEach(btn => {
-        btn.classList.add('btn');
-
-        if (document.body.classList.contains('dark-theme')) {
-            btn.style.borderColor = '#f0f8ff';
-            btn.style.color = '#f0f8ff';
-            btn.style.backgroundColor = 'transparent';
-        } else {
-            btn.style.borderColor = '#121212';
-            btn.style.color = '#121212';
-            btn.style.backgroundColor = '#f0f8ff';
-        }
-    });
-
+    
     p.textContent = text;
-    div.append(buttonChange, buttonDelete);
-    li.append(p, div);
+    img.src = url.value;
+    img.style.width = '100px';
+    img.style.height = '100px';
+    div.append(buttonChange);
+    div.append(buttonDelete);
+    li.append(p);
+    li.append(img);
+    li.append(div);
     list.append(li);
     inp.value = '';
+    url.value = '';
+    
+    buttonDelete.onclick = () => {
+        li.remove();
+    }
 
-    buttonDelete.onclick = () => li.remove();
-    buttonChange.onclick = () => p.classList.toggle('done');
-};
-
+    buttonChange.onclick = () => {
+        if(p.getAttribute('class') === 'done'){
+            p.removeAttribute('class')
+        }else{
+            p.className = 'done';
+        }
+    }
+}
 
 dark.onclick = () => {
     document.body.style.backgroundColor = '#121212';
@@ -86,3 +88,4 @@ light.onclick = () => {
         btn.style.backgroundColor = '#f0f8ff';
     });
 };
+
