@@ -8,22 +8,21 @@
 </head>
 <body>
 
-      <div class="mode">
-        <button class="dark" id="dark">Dark</button>
-        <button class="light" id="light">Light</button>
-      </div>
-
-        <div class="continer">
+    <div class="mode">
+        <button id="dark">dark</button>
+        <button id="light">light</button>
+    </div>
+    
+    <div class="container">
         <h1 class="title">Мой todolist</h1>
         <div class="addTodo">
             <input type="text" placeholder="Создать задачу" id="inp">
+            <input type="url" placeholder="Ссылка на картинку" id="url">
             <button id="btnAdd">Создать</button>
         </div>
-        
-        <h2 class="titleList">Список задач</h2>
-        <ul class="list" id="list">
 
-        </ul>
+        <h2 class="titleList">Список задач</h2>
+        <ul class="list" id="list"></ul>
     </div>
 
     <script src="./main.js"></script>
